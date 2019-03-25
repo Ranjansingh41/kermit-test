@@ -14,7 +14,6 @@ module.exports = self;
 // https://github.com/mochajs/mocha/wiki/Using-mocha-programmatically
 
 var testSetup = require('./testSetup.js');
-var testCleanup = require('./testCleanup.js');
 var spawn = require('child_process').spawn;
 
 startTests();
@@ -26,7 +25,6 @@ function startTests() {
   async.series(
     [
       testSetup.bind(null),
-      testCleanup.bind(null),
       testRun.bind(null)
     ],
     function (err) {
@@ -45,17 +43,7 @@ function testRun(next) {
 
   // takes a list of files/ directories for mocha and runs all in series
   var tests = [
-    'tests/core/install/*.js',
-    'tests/core/account/*.js',
-    'tests/core/accountIntegration/*.js',
-    'tests/core/api/*.js',
-//    'tests/core/languageTests/AMI_v*.js',
-    'tests/core/project/*.js',
-    'tests/core/subscriptionIntegration/*.js',
-    'tests/core/resources/GH_ORG_PRI_OWN_RSYNC.js',
-    'tests/core/resources/GH_ORG_PRI_OWN_RUNSH.js',
-    'tests/core/resources/GH_IND_PUB_OWN_RUNCI.js',
-    'tests/core/resources/GH_IND_PRI_OWN_RUNSH_SHIPCTL.js'
+   'tests/core/api/PROJECTS.js'
   ];
 
   async.eachSeries(tests,

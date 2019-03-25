@@ -1,10 +1,10 @@
 #!/bin/bash -e
 
 main() {
-       # set up run test case
-. testParams.env
+  #setup test comparison values
+  . testParams.env
   npm install
-npm run start-test
+  npm run start-tests
 }
 
 main
